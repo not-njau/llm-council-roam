@@ -28,5 +28,3 @@ You can replace the model tags (e.g., `openRouter/anthropic/claude-sonnet-4.6`) 
   Models are assigned to critique a different model's response. They evaluate logical consistency, unexamined assumptions, and argument robustness. 
 - **Phase 3: The Verdict**
   The chair model reviews the conjectures and criticisms, attempting to synthesize the correct path forward.
-
-> **Note:**__You are the average of the LLMs you hang out with!__
