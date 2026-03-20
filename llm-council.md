@@ -1,0 +1,33 @@
+- 👥 The Council  #roam/templates
+	- {{👥 The Council:SmartBlock:LLM Council}}
+
+- #SmartBlock  LLM Council
+	- <%CURRENTBLOCKREF:uid,false%>
+	- <%NOBLOCKOUTPUT%><%SET:count,<%INPUT:Compare how many models?%%2%%3%%4%>%>
+	- <%NOBLOCKOUTPUT%><%SET:m1,<%INPUT:Model #1%%openRouter/moonshotai/kimi-k2.5%%openRouter/anthropic/claude-sonnet-4.5%%openRouter/google/gemini-2.5-pro-preview%%openRouter/openai/gpt-5.2%>%>
+	- <%NOBLOCKOUTPUT%><%SET:m2,<%INPUT:Model #2%%openRouter/moonshotai/kimi-k2.5%%openRouter/anthropic/claude-sonnet-4.5%%openRouter/google/gemini-2.5-pro-preview%%openRouter/openai/gpt-5.2%>%>
+	- <%IFVAR:count,3%><%NOBLOCKOUTPUT%><%SET:m3,<%INPUT:Model #3%%openRouter/moonshotai/kimi-k2.5%%openRouter/anthropic/claude-sonnet-4.5%%openRouter/google/gemini-2.5-pro-preview%%openRouter/openai/gpt-5.2%>%>
+	- <%IFVAR:count,4%><%NOBLOCKOUTPUT%><%SET:m3,<%INPUT:Model #3%%openRouter/moonshotai/kimi-k2.5%%openRouter/anthropic/claude-sonnet-4.5%%openRouter/google/gemini-2.5-pro-preview%%openRouter/openai/gpt-5.2%>%> <%NOBLOCKOUTPUT%><%SET:m4,<%INPUT:Model #4%%openRouter/moonshotai/kimi-k2.5%%openRouter/anthropic/claude-sonnet-4.5%%openRouter/google/gemini-2.5-pro-preview%%openRouter/openai/gpt-5.2%>%>
+	- <%NOBLOCKOUTPUT%><%SET:contextCount,<%INPUT:How many context pages?%%0%%1%%2%%3%%4%>%>
+	- <%IFVAR:contextCount,1%><%NOBLOCKOUTPUT%><%SET:page1,<%INPUT:Select context page{page}%>%>
+	- <%IFVAR:contextCount,2%><%NOBLOCKOUTPUT%><%SET:page1,<%INPUT:Select context page 1{page}%>%>
+	- <%IFVAR:contextCount,2%><%NOBLOCKOUTPUT%><%SET:page2,<%INPUT:Select context page 2{page}%>%>
+	- <%IFVAR:contextCount,3%><%NOBLOCKOUTPUT%><%SET:page1,<%INPUT:Select context page 1{page}%>%>
+	- <%IFVAR:contextCount,3%><%NOBLOCKOUTPUT%><%SET:page2,<%INPUT:Select context page 2{page}%>%>
+	- <%IFVAR:contextCount,3%><%NOBLOCKOUTPUT%><%SET:page3,<%INPUT:Select context page 3{page}%>%>
+	- <%IFVAR:contextCount,4%><%NOBLOCKOUTPUT%><%SET:page1,<%INPUT:Select context page 1{page}%>%>
+	- <%IFVAR:contextCount,4%><%NOBLOCKOUTPUT%><%SET:page2,<%INPUT:Select context page 2{page}%>%>
+	- <%IFVAR:contextCount,4%><%NOBLOCKOUTPUT%><%SET:page3,<%INPUT:Select context page 3{page}%>%>
+	- <%IFVAR:contextCount,4%><%NOBLOCKOUTPUT%><%SET:page4,<%INPUT:Select context page 4{page}%>%>
+	- <%IFVAR:contextCount,0%><%NOBLOCKOUTPUT%><%SET:contextFormatted,%>
+	- <%IFVAR:contextCount,1%><%NOBLOCKOUTPUT%><%SET:contextFormatted,<%GET:page1%>%>
+	- <%IFVAR:contextCount,2%><%NOBLOCKOUTPUT%><%SET:contextFormatted,{page+ref(<%GET:page1%>+<%GET:page2%>)}%>
+	- <%IFVAR:contextCount,3%><%NOBLOCKOUTPUT%><%SET:contextFormatted,{page+ref(<%GET:page1%>+<%GET:page2%>+<%GET:page3%>)}%>
+	- <%IFVAR:contextCount,4%><%NOBLOCKOUTPUT%><%SET:contextFormatted,{page+ref(<%GET:page1%>+<%GET:page2%>+<%GET:page3%>+<%GET:page4%>)}%>
+	- **LLM Council ⤵︎⤵︎⤵︎** <%FOCUSONBLOCK%>  {{🏛️ Run Chair Synthesis:SmartBlock:Phase 3 - The Chair Synthesis:Clear=false,Order=0}}
+		- **Model Comparison ⤵︎⤵︎**  {{⚖️ Run Peer Review:SmartBlock:Phase 2 - Auto-Rotation Critique:Clear=false,Order=0}} 
+			- **<%GET:m1%>**<%LIVEAIGEN:<%GET:uid%>,<%GET:contextFormatted%>,{append},<%GET:m1%>,,true%>
+			- **<%GET:m2%>**<%LIVEAIGEN:<%GET:uid%>,<%GET:contextFormatted%>,{append},<%GET:m2%>,,true%>
+			- <%IFVAR:count,3%>**<%GET:m3%>**<%LIVEAIGEN:<%GET:uid%>,<%GET:contextFormatted%>,{append},<%GET:m3%>,,true%>
+			- <%IFVAR:count,4%>**<%GET:m3%>**<%LIVEAIGEN:<%GET:uid%>,<%GET:contextFormatted%>,{append},<%GET:m3%>,,true%>
+			- <%IFVAR:count,4%>**<%GET:m4%>**<%LIVEAIGEN:<%GET:uid%>,<%GET:contextFormatted%>,{append},<%GET:m4%>,,true%>
